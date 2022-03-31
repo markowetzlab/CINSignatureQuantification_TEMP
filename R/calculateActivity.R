@@ -14,9 +14,9 @@ setMethod("calculateActivity",
                          lSigs = applyThreshNormAndScaling(Hraw)
 
                          # Load data to be put into model as backup
-                         W = readRDS("data/Drews2022_TCGA_Signatures.rds")
-                         vThresh = readRDS("data/Drews2022_TCGA_Signature_Thresholds.rds")
-                         lScales = readRDS("data/Drews2022_TCGA_Scaling_Variables.rds")
+                         W = get(load("data/Drews2022_TCGA_Signatures.rda"))
+                         vThresh = get(load("data/Drews2022_TCGA_Signature_Thresholds.rda"))
+                         lScales = get(load("data/Drews2022_TCGA_Scaling_Variables.rda"))
 
                          # Combine results
                          methods::new("cignaturesSIG",object,

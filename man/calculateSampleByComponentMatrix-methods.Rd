@@ -7,9 +7,9 @@
 \alias{calculateSampleByComponentMatrix,cignaturesCN-method}
 \title{calculateSampleByComponentMatrix}
 \usage{
-calculateSampleByComponentMatrix(object, method = "drews")
+calculateSampleByComponentMatrix(object, method = "drews", test.new = FALSE)
 
-\S4method{calculateSampleByComponentMatrix}{cignaturesCN}(object, method = NULL)
+\S4method{calculateSampleByComponentMatrix}{cignaturesCN}(object, method = NULL, test.new = FALSE)
 }
 \arguments{
 \item{object}{cignaturesCN object}

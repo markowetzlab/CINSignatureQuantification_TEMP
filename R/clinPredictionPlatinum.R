@@ -5,7 +5,7 @@ setMethod("clinPredictionPlatinum",
               mNorm = object@activities$normAct1
 
               # Load and apply gBRCA1 scaling vars
-              lModel = readRDS("data/Drews2022_CX3CX2_Clinical_classifier.rds")
+              lModel = get(load("data/Drews2022_CX3CX2_Clinical_classifier.rda"))
               mNormGBRCA1 = scaleByModel(mNorm[,names(lModel$mean)], lModel)
 
               # Do classification

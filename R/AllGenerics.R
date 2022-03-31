@@ -63,12 +63,13 @@ setGeneric("getExperiment", function(object) standardGeneric("getExperiment"))
 #' @param object cignaturesCN object
 #' @param method Method to extract copy number features. Default is "drews".
 #' @param smooth.diploid Binary variable indicating whether segments close to 2 should be collapsed to 2 and merged together. Default is TRUE.
+#' @param cores Number of CPU threads/cores to utilise via doParallel. Default is 1.
 #' @return A cignaturesCN class object with extracted features stored in the "featData" slot
 #' @export
 #' @docType methods
 #' @rdname calculateFeatures-methods
 #'
-setGeneric("calculateFeatures",function(object, method="drews", smooth.diploid=TRUE)
+setGeneric("calculateFeatures",function(object, method="drews", smooth.diploid=TRUE,cores=1)
     standardGeneric("calculateFeatures"))
 
 #' calculateSampleByComponentMatrix
@@ -84,7 +85,7 @@ setGeneric("calculateFeatures",function(object, method="drews", smooth.diploid=T
 #' @rdname calculateSampleByComponentMatrix-methods
 #'
 
-setGeneric("calculateSampleByComponentMatrix",function(object, method="drews")
+setGeneric("calculateSampleByComponentMatrix",function(object, method="drews",test.new=FALSE)
     standardGeneric("calculateSampleByComponentMatrix"))
 
 #' calculateActivity
@@ -118,7 +119,7 @@ setGeneric("calculateActivity",function(object, method="drews")
 #' @rdname quantifyCNSignatures-methods
 #'
 
-setGeneric("quantifyCNSignatures",function(object, experimentName="Default", method="drews")
+setGeneric("quantifyCNSignatures",function(object, experimentName="Default", method="drews",cores=1)
     standardGeneric("quantifyCNSignatures"))
 
 #' clinPredictionPlatinum

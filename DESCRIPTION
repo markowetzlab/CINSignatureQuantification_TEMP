@@ -2,24 +2,23 @@ Package: CINSignatureQuantification
 Title: Simple and quick measuring of copy number signatures in cancers
 Version: 0.0.9
 Authors@R: 
-    c(person(given = "Philip",
+    c(person(given = "Philip S",
            family = "Smith",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "philip.smith@cruk.cam.ac.uk",
-           comment = c(ORCID = "YOUR-ORCID-ID")),
-    person(given = "Ruben",
-           middle = "M",
+           comment = c(ORCID = "0000-0002-9306-1747")),
+    person(given = "Ruben M",
            family = "Drews",
            role = c("aut", "cre"),
            email = "Ruben.Drews@cruk.cam.ac.uk",
            comment = c(ORCID = "0000-0001-7360-4970")),
     person(given = "Cancer Research UK",
-           role = c("cph", "and"),
+           role = c("cph", "fnd"),
            email = "Florian.Markowetz@cruk.cam.ac.uk",
-           comment = c(ORCID = "0000-0002-2784-5308")),
+           comment = c(ORCID = "0000-0002-2784-5308"))
     )
 Description: Allowing the simple and quick quantification of copy number signatures in 
-    cancer samples from copy number profiles.  The signatures are a readout of mutational 
+    cancer samples from copy number profiles. The signatures are a readout of mutational 
     processes resulting in chromosomal instability (CIN). It is thought as a one-stop 
     solution, combining multiple published solutions. At the moment the methods from 
     Drews et al. (Nature, 2022) and Macintyre et al. (Nature Genetics, 2018) are included.
@@ -33,13 +32,17 @@ Imports:
     stats,
     utils,
     parallel,
-    Biobase (>= 2.52.0,
+    Biobase (>= 2.46.0),
     data.table (>= 1.14),
     graphics (>= 1.3.7),
     flexmix (>= 2.3-17),
     stringr (>= 1.4),
-    foreach (>= 1.5.1),
-    doMC (>= 1.3.7),
-    YAPSA (>= 1.18.0)
+    YAPSA (>= 1.12.0)
 Depends: 
-    R (>= 3.60)
+    R (>= 3.6)
+Suggests: 
+    foreach (>= 1.5.1),
+    doParallel (>= 1.0.16),
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

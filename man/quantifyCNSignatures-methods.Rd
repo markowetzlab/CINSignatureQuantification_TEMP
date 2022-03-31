@@ -5,7 +5,12 @@
 \alias{quantifyCNSignatures}
 \title{quantifyCNSignatures}
 \usage{
-quantifyCNSignatures(object, experimentName = "Default", method = "drews")
+quantifyCNSignatures(
+  object,
+  experimentName = "Default",
+  method = "drews",
+  cores = 1
+)
 }
 \arguments{
 \item{object}{cignaturesCN object}

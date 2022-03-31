@@ -1,11 +1,15 @@
 ---
+title: "CINSignaturesQuantification_vignette"
+
+---
 title: "CINSignatureQuantification - Simple and quick measuring of copy number signatures in cancers"
 author: "Philip Smith <cre, auth>, Ruben Drews <cre, auth>, Cancer Research UK <cph, fnd>"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: 
-  html_document:
-    toc: TRUE
-    toc_float: TRUE
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{CINSignaturesQuantification_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
@@ -112,4 +116,15 @@ myData
 
 ```{r sxc_plotting}
 plotSampleByComponent(object = myData)
+```
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(CINSignatureQuantification)
 ```
