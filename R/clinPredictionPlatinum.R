@@ -1,3 +1,5 @@
+#' @rdname clinPredictionPlatinum-methods
+#' @aliases clinPredictionPlatinum
 setMethod("clinPredictionPlatinum",
           signature=c(object="cignaturesSIG"),
           definition=function(object){

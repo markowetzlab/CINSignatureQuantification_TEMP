@@ -1,3 +1,5 @@
+#' @rdname clinPredictionDenovo-methods
+#' @aliases clinPredictionDenovo
 setMethod("clinPredictionDenovo",
           signature=c(object="cignaturesSIG"),
           definition=function(object, sampTrain, sigsTrain){

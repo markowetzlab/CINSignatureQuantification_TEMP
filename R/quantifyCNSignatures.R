@@ -1,10 +1,11 @@
+#' @rdname quantifyCNSignatures-methods
+#' @aliases quantifyCNSignatures
 setMethod("quantifyCNSignatures",
           signature=c(object=c("data.frame")),
           definition=function(object, experimentName="Default", method="drews",cores=1){
               # Check method
               if(is.null(method) | ! (method %in% c("drews", "mac")) ){
-                  warning("Method was neither 'drews' nor 'mac'. Set it to default 'drews'.")
-                  method = "drews"
+                  stop("Method was neither 'drews' nor 'mac'.")
               }
               switch(method,
                      mac={},

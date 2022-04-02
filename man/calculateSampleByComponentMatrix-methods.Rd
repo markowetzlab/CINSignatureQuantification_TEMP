@@ -7,16 +7,14 @@
 \alias{calculateSampleByComponentMatrix,cignaturesCN-method}
 \title{calculateSampleByComponentMatrix}
 \usage{
-calculateSampleByComponentMatrix(object, method = "drews", test.new = FALSE)
+calculateSampleByComponentMatrix(object, method = "drews")
 
-\S4method{calculateSampleByComponentMatrix}{cignaturesCN}(object, method = NULL, test.new = FALSE)
+\S4method{calculateSampleByComponentMatrix}{cignaturesCN}(object, method = NULL)
 }
 \arguments{
 \item{object}{cignaturesCN object}
 
 \item{method}{Determines the mixture components used to calculate sum-of-posterior probabilities. Default is "drews".}
-
-\item{experimentName}{Name of the experiment}
 }
 \value{
 A cignaturesCN class object with sum-of-posterior probabilities stored in the "featFitting" slot

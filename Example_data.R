@@ -22,14 +22,11 @@ myData
 
 ## Feature extraction (includes smoothing and preparing data)
 myData.drews = calculateFeatures(myData, method="drews",cores = 4)
-myData.mac = calculateFeatures(myData, method="mac",cores = 2)
+myData.mac = calculateFeatures(myData, method="mac",cores = 4)
 
 ## Get sum-of-posterior matrix
 myData.drews = calculateSampleByComponentMatrix(myData.drews, method="drews")
-
-## These output different SoP SxF matrix - needs to be fixed
-myData.mac = calculateSampleByComponentMatrix(myData.mac, method="mac",test.new=FALSE) # Original flexmix implementation
-myData.macNew = calculateSampleByComponentMatrix(myData.mac, method="mac",test.new = TRUE) # Using Rubens implementation
+myData.mac = calculateSampleByComponentMatrix(myData.mac, method="mac")
 
 ## Get activities
 # No Mac method yet
@@ -52,9 +49,7 @@ myData.drews = calculateActivity(myData.drews, method="drews")
 # identical(rownames(compareAct), rownames(myData@activities$normAct1))
 # summary(new- compareActTCGA)
 
-
 sigAct478 = quantifyCNSignatures(dfTest, experimentName = "478TCGAPCAWG", method = "drews",cores = 4)
-
 
 ## Test clinical classifier (CX3/CX2 and De-novo for two self chosen signatures)
 vPredPlat = clinPredictionPlatinum(sigAct478)

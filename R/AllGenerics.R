@@ -77,7 +77,6 @@ setGeneric("calculateFeatures",function(object, method="drews", smooth.diploid=T
 #' Calculates and returns a sample-by-component matrix from copy number features in a cignaturesCN object.
 #'
 #' @param object cignaturesCN object
-#' @param experimentName Name of the experiment
 #' @param method Determines the mixture components used to calculate sum-of-posterior probabilities. Default is "drews".
 #' @return A cignaturesCN class object with sum-of-posterior probabilities stored in the "featFitting" slot
 #' @export
@@ -85,7 +84,7 @@ setGeneric("calculateFeatures",function(object, method="drews", smooth.diploid=T
 #' @rdname calculateSampleByComponentMatrix-methods
 #'
 
-setGeneric("calculateSampleByComponentMatrix",function(object, method="drews",test.new=FALSE)
+setGeneric("calculateSampleByComponentMatrix",function(object, method="drews")
     standardGeneric("calculateSampleByComponentMatrix"))
 
 #' calculateActivity
@@ -112,7 +111,8 @@ setGeneric("calculateActivity",function(object, method="drews")
 #'
 #' @param object cignaturesCN object
 #' @param experimentName A user-specified name of the experiment
-#' @param method The method used for calculating the signature activities. Default is "drews".
+#' @param method The method used for calculating the signature activities. Default is "drews"
+#' @param cores Number of threads/cores to use for parallel processing
 #' @return A cignaturesSIG class object with four activity matrices stored in the "activities" slot
 #' @export
 #' @docType methods
@@ -136,7 +136,7 @@ setGeneric("quantifyCNSignatures",function(object, experimentName="Default", met
 setGeneric("clinPredictionPlatinum",function(object)
     standardGeneric("clinPredictionPlatinum"))
 
-#' clinPredictionPlatinum
+#' clinPredictionDenovo
 #'
 #' The function takes signature activities based on Drews et al. methodology and predicts patient's response based on
 #' user-specified pair of signatures. \cr \cr
@@ -148,7 +148,7 @@ setGeneric("clinPredictionPlatinum",function(object)
 #' @return A vector with "Signature <1> higher" or "Signature <2> higher" for all samples in the input object.
 #' @export
 #' @docType methods
-#' @rdname clinPredictionPlatinum-methods
+#' @rdname clinPredictionDenovo-methods
 #'
 
 setGeneric("clinPredictionDenovo",function(object, sampTrain, sigsTrain)

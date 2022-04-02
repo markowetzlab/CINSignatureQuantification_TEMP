@@ -1,3 +1,5 @@
+#' @rdname calculateActivity-methods
+#' @aliases calculateActivity
 setMethod("calculateActivity",
           signature=c(object="cignaturesCN"),
           definition=function(object, method="drews"){
