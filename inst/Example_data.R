@@ -1,5 +1,8 @@
 ## Testing ground for package and functions
 
+# - CHECK E/W/N
+#   - Non-standard license
+#   - no visible binding for global variable i (related to foreach loop assignment)
 # - Multiple sample-by-signature matrices are not ideal
 
 # Load library
@@ -9,16 +12,16 @@ library(CINSignatureQuantification)
 dfTest = readRDS("inst/TCGA_478_Samples_SNP6_GOLD.rds")
 
 ## Pipeline method
-sigAct478.drews = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",method = "drews",cores = 4)
-sigAct478.mac = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",method = "mac",cores = 4)
+sigAct478.drews = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",method = "drews",cores = 6)
+sigAct478.mac = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",method = "mac",cores = 6)
 
 ## Individual functions
 # Convert to cignatures object
 myData = createCignatures(data = dfTest)
 
 ## Feature extraction (includes smoothing and preparing data)
-myData.drews = calculateFeatures(myData, method="drews",cores = 4)
-myData.mac = calculateFeatures(myData, method="mac",cores = 4)
+myData.drews = calculateFeatures(myData, method="drews",cores = 6)
+myData.mac = calculateFeatures(myData, method="mac",cores = 6)
 
 ## Get sum-of-posterior matrix
 myData.drews = calculateSampleByComponentMatrix(myData.drews)
@@ -52,4 +55,3 @@ plotSegments(sigAct478.drews,sample = 1,cn.max = 8)
 getsampleByComponent(sigAct478.drews)
 getExperiment(sigAct478.drews)
 getSamples(sigAct478.drews)
-head(getSegments(sigAct478.drews))

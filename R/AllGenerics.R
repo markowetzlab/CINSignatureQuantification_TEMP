@@ -34,15 +34,15 @@ setGeneric("getSegments", function(object) standardGeneric("getSegments"))
 #'
 setGeneric("getSamplefeatures", function(object) standardGeneric("getSamplefeatures"))
 
-#' getsampleByComponent
+#' getSampleByComponent
 #'
 #' @param object cignaturesCN object
 #' @return matrix containing the sample-by-component data
 #' @export
 #' @docType methods
-#' @rdname getsampleByComponent-methods
+#' @rdname getSampleByComponent-methods
 #'
-setGeneric("getSampleByComponent", function(object) standardGeneric("getsampleByComponent"))
+setGeneric("getSampleByComponent", function(object) standardGeneric("getSampleByComponent"))
 
 #' getExperiment
 #'

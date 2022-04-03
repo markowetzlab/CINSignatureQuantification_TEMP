@@ -36,7 +36,7 @@ extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1
 
         # Another failsafe that the outcome is definitely numeric
         temp_list = unlist( temp_list, recursive = FALSE )
-        outList = lapply(temp_list, function(thisDF) {
+        outList2 = lapply(temp_list, function(thisDF) {
             thisDF[,2] = as.numeric(thisDF[,2])
             return(thisDF)
         })
@@ -52,7 +52,7 @@ extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1
         copynumber<-getCNDrews(CN_data)
 
         temp_list = list(segsize=segsize,bp10MB=bp10MB,osCN=osCN,bpchrarm=bpchrarm,changepoint=changepoint,copynumber=copynumber)
-        temp_list = unlist( temp_list, recursive = FALSE )
+        #temp_list = unlist( temp_list, recursive = FALSE )
         outList = lapply(temp_list, function(thisDF) {
             thisDF[,2] = as.numeric(thisDF[,2])
             return(thisDF)
