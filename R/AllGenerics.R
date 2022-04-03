@@ -42,7 +42,7 @@ setGeneric("getSamplefeatures", function(object) standardGeneric("getSamplefeatu
 #' @docType methods
 #' @rdname getsampleByComponent-methods
 #'
-setGeneric("getsampleByComponent", function(object) standardGeneric("getsampleByComponent"))
+setGeneric("getSampleByComponent", function(object) standardGeneric("getsampleByComponent"))
 
 #' getExperiment
 #'

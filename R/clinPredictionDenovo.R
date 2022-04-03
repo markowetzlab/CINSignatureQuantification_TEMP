@@ -3,6 +3,9 @@
 setMethod("clinPredictionDenovo",
           signature=c(object="cignaturesSIG"),
           definition=function(object, sampTrain, sigsTrain){
+              if(getExperiment(object)@feature.method != "drews"){
+                  stop("This function is only applicable to objects using drews method.")
+              }
               # Load normalised signature activities
               mNorm = object@activities$normAct1
 

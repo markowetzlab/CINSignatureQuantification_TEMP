@@ -3,6 +3,9 @@
 setMethod("calculateSampleByComponentMatrix",
           signature=c(object="cignaturesCN"),
           definition=function(object, method=NULL){
+              if(length(object@featData) == 0){
+                  stop("Copy number features unavailable - run 'calculateFeatures()'")
+              }
               if(is.null(method)){
                 method <- getExperiment(object)@feature.method
               }

@@ -16,17 +16,15 @@ createCignatures <- function(data=NULL,experimentName = "defaultExperiment",buil
             stop("File not found\n")
         }
         if(file.exists(data)){
-            header <- colnames(utils::read.table(data,
+            header <- colnames(data.table::fread(input = data,
                                           header = T,
-                                          sep = "\t",
                                           colClasses = c("character","numeric","numeric","numeric","character"),
                                           nrows = 1))
             if(!any(header == c("chromosome","start","end","segVal","sample"))){
                 stop("Header does not match the required naming")
             }
-            segTable <- utils::read.table(data,
+            segTable <- data.table::fread(input = data,
                                    header = T,
-                                   sep = "\t",
                                    colClasses = c("character","numeric","numeric","numeric","character"))
             if(checkSegValRounding(segTable$segVal)){
                 warning("segVal appears to be rounded, copy number signatures require unrounded absolute copy numbers")

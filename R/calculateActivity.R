@@ -2,13 +2,32 @@
 #' @aliases calculateActivity
 setMethod("calculateActivity",
           signature=c(object="cignaturesCN"),
-          definition=function(object, method="drews"){
+          definition=function(object, method=NULL){
+              if(length(object@featFitting) == 0){
+                  stop("Sample-by-component unavailable - run 'calculateSampleByComponentMatrix()'")
+              }
               # Check method
               if(is.null(method)){
                   method <- getExperiment(object)@feature.method
               }
               switch(method,
-                     mac={},
+                     mac={
+                         SigActs <- t(calculateActivityMac(object))
+                         SigActs <- list(rawAct0=SigActs)
+
+                         W<-t(get(load("data/Macintyre2018_OV_Signatures.rda")))
+                         # Combine results
+                         methods::new("cignaturesSIG",object,
+                                      activities=SigActs,
+                                      signature.model = method,
+                                      backup.signatures=W,
+                                      backup.thresholds=0.01,
+                                      backup.scale=list(mean=c("NULL"),weight=c("NULL")),
+                                      backup.scale.model="NULL",
+                                      ExpData = methods::initialize(object@ExpData,
+                                                                    last.modified = as.character(Sys.time()),
+                                                                    feature.method = method))
+                     },
                      drews={
                          # Calculate activities
                          Hraw = calculateActivityDrews(object)

@@ -1,0 +1,55 @@
+## Testing ground for package and functions
+
+# - Multiple sample-by-signature matrices are not ideal
+
+# Load library
+library(CINSignatureQuantification)
+
+# Load test data
+dfTest = readRDS("inst/TCGA_478_Samples_SNP6_GOLD.rds")
+
+## Pipeline method
+sigAct478.drews = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",method = "drews",cores = 4)
+sigAct478.mac = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",method = "mac",cores = 4)
+
+## Individual functions
+# Convert to cignatures object
+myData = createCignatures(data = dfTest)
+
+## Feature extraction (includes smoothing and preparing data)
+myData.drews = calculateFeatures(myData, method="drews",cores = 4)
+myData.mac = calculateFeatures(myData, method="mac",cores = 4)
+
+## Get sum-of-posterior matrix
+myData.drews = calculateSampleByComponentMatrix(myData.drews)
+myData.mac = calculateSampleByComponentMatrix(myData.mac)
+
+## Get activities
+myData.drews = calculateActivity(myData.drews)
+myData.mac = calculateActivity(myData.mac)
+
+## Test clinical classifier (CX3/CX2 and De-novo for two self chosen signatures)
+vPredPlat = clinPredictionPlatinum(sigAct478.drews)
+vPredCX8CX9 = clinPredictionDenovo(sigAct478.drews, sampTrain = sample(getSamples(sigAct478.drews), 50), sigsTrain = c("CX9", "CX8"))
+
+## Additional functions
+# Show and subsetting
+sigAct478.drews
+sigAct478.drews[1:10]
+sigAct478.drews[getSamples(sigAct478.drews)[1:50]]
+
+# Sample feature/clinical information
+getSamplefeatures(sigAct478.drews)
+load("inst/test.sample.features.rda")
+sigAct478.drews = addsampleFeatures(object = sigAct478.drews,sample.data = test.sample.features)
+getSamplefeatures(sigAct478.drews)
+
+# plots
+plotSampleByComponent(sigAct478.drews)
+plotSegments(sigAct478.drews,sample = 1,cn.max = 8)
+
+# misc
+getsampleByComponent(sigAct478.drews)
+getExperiment(sigAct478.drews)
+getSamples(sigAct478.drews)
+head(getSegments(sigAct478.drews))

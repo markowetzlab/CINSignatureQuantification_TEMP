@@ -8,7 +8,7 @@
 \usage{
 calculateActivity(object, method = "drews")
 
-\S4method{calculateActivity}{cignaturesCN}(object, method = "drews")
+\S4method{calculateActivity}{cignaturesCN}(object, method = NULL)
 }
 \arguments{
 \item{object}{cignaturesCN object}
