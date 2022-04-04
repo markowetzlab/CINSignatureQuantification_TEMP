@@ -13,7 +13,7 @@ setMethod("calculateActivity",
               switch(method,
                      mac={
                          SigActs <- t(calculateActivityMac(object))
-                         SigActs <- list(rawAct0=SigActs)
+                         SigActs <- list(normAct1=SigActs)
 
                          W<-t(get(load("data/Macintyre2018_OV_Signatures.rda")))
                          # Combine results

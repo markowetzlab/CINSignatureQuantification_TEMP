@@ -50,6 +50,7 @@ getSamplefeatures(sigAct478.drews)
 # plots
 plotSampleByComponent(sigAct478.drews)
 plotSegments(sigAct478.drews,sample = 1,cn.max = 8)
+plotActivities(object = sigAct478.mac)
 
 # misc
 getsampleByComponent(sigAct478.drews)

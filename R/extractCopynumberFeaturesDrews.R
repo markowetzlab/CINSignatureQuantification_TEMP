@@ -36,7 +36,7 @@ extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1
 
         # Another failsafe that the outcome is definitely numeric
         temp_list = unlist( temp_list, recursive = FALSE )
-        outList2 = lapply(temp_list, function(thisDF) {
+        outList = lapply(temp_list, function(thisDF) {
             thisDF[,2] = as.numeric(thisDF[,2])
             return(thisDF)
         })
