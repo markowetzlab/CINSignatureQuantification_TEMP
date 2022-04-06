@@ -1,5 +1,3 @@
-#' @importFrom foreach foreach
-#' @importFrom doMC registerDoMC
 extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1, rmNorm = FALSE) {
 
     # Get chromosome length and centromere locations
@@ -8,15 +6,17 @@ extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1
     centromeres = gaps[gaps[,8]=="centromere",]
 
     if(cores > 1) {
+        if (!requireNamespace("doParallel", quietly = TRUE)) {
+            stop(
+                "Package \"doParallel\" must be installed to use multiple threads/cores.",
+                call. = FALSE
+            )
+        }
         # Multi-core usage
+        `%dopar%` <- foreach::`%dopar%`
+        doParallel::registerDoParallel(cores)
 
-        ## Not needed in package?
-        # require(foreach)
-        # require(doMC)
-
-        registerDoMC(cores)
-
-        temp_list = foreach(i=1:6) %dopar% {
+        temp_list = foreach::foreach(i=1:6) %dopar% {
             if(i == 1){
                 list(segsize = getSegsizeDrews(CN_data, rmNorm = rmNorm) )
             } else if (i == 2) {
@@ -31,8 +31,8 @@ extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1
                 # Technically not needed but kept for backwards compatibility of the code
                 list(copynumber = getCNDrews(CN_data, rmNorm = rmNorm) )
             }
-
         }
+        doParallel::stopImplicitCluster()
 
         # Another failsafe that the outcome is definitely numeric
         temp_list = unlist( temp_list, recursive = FALSE )
@@ -52,7 +52,7 @@ extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1
         copynumber<-getCNDrews(CN_data)
 
         temp_list = list(segsize=segsize,bp10MB=bp10MB,osCN=osCN,bpchrarm=bpchrarm,changepoint=changepoint,copynumber=copynumber)
-        temp_list = unlist( temp_list, recursive = FALSE )
+        #temp_list = unlist( temp_list, recursive = FALSE )
         outList = lapply(temp_list, function(thisDF) {
             thisDF[,2] = as.numeric(thisDF[,2])
             return(thisDF)

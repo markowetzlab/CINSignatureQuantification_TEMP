@@ -3,6 +3,6 @@ getPloidyfeat <- function(x){
         segLen<-(as.numeric(y$end)-as.numeric(y$start))
         ploidy<-sum((segLen/sum(segLen))*as.numeric(y$segVal))
     }))
-    featploidy <- round(featploidy,digits = 2)
+    featploidy <- round(featploidy,digits = 3)
     return(featploidy)
 }

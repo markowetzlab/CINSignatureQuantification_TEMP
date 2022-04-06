@@ -34,15 +34,15 @@ setGeneric("getSegments", function(object) standardGeneric("getSegments"))
 #'
 setGeneric("getSamplefeatures", function(object) standardGeneric("getSamplefeatures"))
 
-#' getsampleByComponent
+#' getSampleByComponent
 #'
 #' @param object cignaturesCN object
 #' @return matrix containing the sample-by-component data
 #' @export
 #' @docType methods
-#' @rdname getsampleByComponent-methods
+#' @rdname getSampleByComponent-methods
 #'
-setGeneric("getsampleByComponent", function(object) standardGeneric("getsampleByComponent"))
+setGeneric("getSampleByComponent", function(object) standardGeneric("getSampleByComponent"))
 
 #' getExperiment
 #'
@@ -63,12 +63,13 @@ setGeneric("getExperiment", function(object) standardGeneric("getExperiment"))
 #' @param object cignaturesCN object
 #' @param method Method to extract copy number features. Default is "drews".
 #' @param smooth.diploid Binary variable indicating whether segments close to 2 should be collapsed to 2 and merged together. Default is TRUE.
+#' @param cores Number of CPU threads/cores to utilise via doParallel. Default is 1.
 #' @return A cignaturesCN class object with extracted features stored in the "featData" slot
 #' @export
 #' @docType methods
 #' @rdname calculateFeatures-methods
 #'
-setGeneric("calculateFeatures",function(object, method="drews", smooth.diploid=TRUE)
+setGeneric("calculateFeatures",function(object, method="drews", smooth.diploid=TRUE,cores=1)
     standardGeneric("calculateFeatures"))
 
 #' calculateSampleByComponentMatrix
@@ -76,7 +77,6 @@ setGeneric("calculateFeatures",function(object, method="drews", smooth.diploid=T
 #' Calculates and returns a sample-by-component matrix from copy number features in a cignaturesCN object.
 #'
 #' @param object cignaturesCN object
-#' @param experimentName Name of the experiment
 #' @param method Determines the mixture components used to calculate sum-of-posterior probabilities. Default is "drews".
 #' @return A cignaturesCN class object with sum-of-posterior probabilities stored in the "featFitting" slot
 #' @export
@@ -111,14 +111,15 @@ setGeneric("calculateActivity",function(object, method="drews")
 #'
 #' @param object cignaturesCN object
 #' @param experimentName A user-specified name of the experiment
-#' @param method The method used for calculating the signature activities. Default is "drews".
+#' @param method The method used for calculating the signature activities. Default is "drews"
+#' @param cores Number of threads/cores to use for parallel processing
 #' @return A cignaturesSIG class object with four activity matrices stored in the "activities" slot
 #' @export
 #' @docType methods
 #' @rdname quantifyCNSignatures-methods
 #'
 
-setGeneric("quantifyCNSignatures",function(object, experimentName="Default", method="drews")
+setGeneric("quantifyCNSignatures",function(object, experimentName="Default", method="drews",cores=1)
     standardGeneric("quantifyCNSignatures"))
 
 #' clinPredictionPlatinum
@@ -135,7 +136,7 @@ setGeneric("quantifyCNSignatures",function(object, experimentName="Default", met
 setGeneric("clinPredictionPlatinum",function(object)
     standardGeneric("clinPredictionPlatinum"))
 
-#' clinPredictionPlatinum
+#' clinPredictionDenovo
 #'
 #' The function takes signature activities based on Drews et al. methodology and predicts patient's response based on
 #' user-specified pair of signatures. \cr \cr
@@ -147,7 +148,7 @@ setGeneric("clinPredictionPlatinum",function(object)
 #' @return A vector with "Signature <1> higher" or "Signature <2> higher" for all samples in the input object.
 #' @export
 #' @docType methods
-#' @rdname clinPredictionPlatinum-methods
+#' @rdname clinPredictionDenovo-methods
 #'
 
 setGeneric("clinPredictionDenovo",function(object, sampTrain, sigsTrain)

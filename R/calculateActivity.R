@@ -1,12 +1,33 @@
+#' @rdname calculateActivity-methods
+#' @aliases calculateActivity
 setMethod("calculateActivity",
           signature=c(object="cignaturesCN"),
-          definition=function(object, method="drews"){
+          definition=function(object, method=NULL){
+              if(length(object@featFitting) == 0){
+                  stop("Sample-by-component unavailable - run 'calculateSampleByComponentMatrix()'")
+              }
               # Check method
               if(is.null(method)){
                   method <- getExperiment(object)@feature.method
               }
               switch(method,
-                     mac={},
+                     mac={
+                         SigActs <- t(calculateActivityMac(object))
+                         SigActs <- list(normAct1=SigActs)
+
+                         W<-t(get(load("data/Macintyre2018_OV_Signatures.rda")))
+                         # Combine results
+                         methods::new("cignaturesSIG",object,
+                                      activities=SigActs,
+                                      signature.model = method,
+                                      backup.signatures=W,
+                                      backup.thresholds=0.01,
+                                      backup.scale=list(mean=c("NULL"),weight=c("NULL")),
+                                      backup.scale.model="NULL",
+                                      ExpData = methods::initialize(object@ExpData,
+                                                                    last.modified = as.character(Sys.time()),
+                                                                    feature.method = method))
+                     },
                      drews={
                          # Calculate activities
                          Hraw = calculateActivityDrews(object)
@@ -14,9 +35,9 @@ setMethod("calculateActivity",
                          lSigs = applyThreshNormAndScaling(Hraw)
 
                          # Load data to be put into model as backup
-                         W = readRDS("data/Drews2022_TCGA_Signatures.rds")
-                         vThresh = readRDS("data/Drews2022_TCGA_Signature_Thresholds.rds")
-                         lScales = readRDS("data/Drews2022_TCGA_Scaling_Variables.rds")
+                         W = get(load("data/Drews2022_TCGA_Signatures.rda"))
+                         vThresh = get(load("data/Drews2022_TCGA_Signature_Thresholds.rda"))
+                         lScales = get(load("data/Drews2022_TCGA_Scaling_Variables.rda"))
 
                          # Combine results
                          methods::new("cignaturesSIG",object,

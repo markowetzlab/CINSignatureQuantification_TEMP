@@ -15,8 +15,6 @@ calculateSampleByComponentMatrix(object, method = "drews")
 \item{object}{cignaturesCN object}
 
 \item{method}{Determines the mixture components used to calculate sum-of-posterior probabilities. Default is "drews".}
-
-\item{experimentName}{Name of the experiment}
 }
 \value{
 A cignaturesCN class object with sum-of-posterior probabilities stored in the "featFitting" slot

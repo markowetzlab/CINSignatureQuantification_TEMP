@@ -1,5 +1,5 @@
-#' @rdname getsampleByComponent-methods
-#' @aliases getsampleByComponent
-setMethod("getsampleByComponent",signature = "cignaturesCN",function(object){
+#' @rdname getSampleByComponent-methods
+#' @aliases getSampleByComponent
+setMethod("getSampleByComponent",signature = "cignaturesCN",function(object){
         object@featFitting$sampleByComponent
 })

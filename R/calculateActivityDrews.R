@@ -7,7 +7,7 @@ calculateActivityDrews = function(myData) {
     nFeat = ncol(myData@featFitting$sampleByComponent)
 
     # Load signatures
-    W = readRDS("data/Drews2022_TCGA_Signatures.rds")
+    W = get(load("data/Drews2022_TCGA_Signatures.rda"))
 
     # Sanity check mutational catalogue (not really necessary)
     if(nSamp > nFeat) {

@@ -3,24 +3,25 @@
 setMethod("calculateSampleByComponentMatrix",
           signature=c(object="cignaturesCN"),
           definition=function(object, method=NULL){
+              if(length(object@featData) == 0){
+                  stop("Copy number features unavailable - run 'calculateFeatures()'")
+              }
               if(is.null(method)){
                 method <- getExperiment(object)@feature.method
               }
               switch(method,
                      mac={
                          sxc <- calculateSampleByComponentMatrixMac(object@featData,
-                                   all_components=NULL,
-                                   cores = 1,
-                                   rowIter = 1000,
-                                   subcores = 2,
-                                   method = method)
+                                                                      UNINFPRIOR = FALSE)
+                         sxc = c(sxc, method = method)
                          methods::new("cignaturesCN",object,featFitting=sxc,
                                       ExpData = methods::initialize(object@ExpData,
                                                                     last.modified = as.character(Sys.time()),
                                                                     feature.method = method))
                      },
                      drews={
-                         lSxC = calculateSampleByComponentMatrixDrews(object@featData, UNINFPRIOR = TRUE)
+                         lSxC = calculateSampleByComponentMatrixDrews(object@featData,
+                                                                     UNINFPRIOR = TRUE)
                          lSxC = c(lSxC, method = method)
                          methods::new("cignaturesCN",object,featFitting=lSxC,
                                       ExpData = methods::initialize(object@ExpData,
