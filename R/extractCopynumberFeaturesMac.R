@@ -12,14 +12,14 @@ extractCopynumberFeaturesMac <- function(CN_data,cores = 1){
         # Multi-core usage
         `%dopar%` <- foreach::`%dopar%`
         doParallel::registerDoParallel(cores)
-
+        i <- NULL
         temp_list = foreach::foreach(i=1:6) %dopar% {
             if(i == 1){
                 list(segsize = getSegsize(CN_data) )
             } else if (i == 2) {
                 list(bp10MB = getBPnum(CN_data,chrlen) )
             } else if (i == 3) {
-                list(osCN = getOscilation(CN_data,chrlen) )
+                list(osCN = getOscillation(CN_data,chrlen) )
             } else if (i == 4) {
                 list(bpchrarm = getCentromereDistCounts(CN_data,centromeres,chrlen) )
             } else if (i == 5) {
@@ -34,7 +34,7 @@ extractCopynumberFeaturesMac <- function(CN_data,cores = 1){
     } else {
         segsize <- getSegsize(CN_data)
         bp10MB <- getBPnum(CN_data,chrlen)
-        osCN <- getOscilation(CN_data,chrlen)
+        osCN <- getOscillation(CN_data,chrlen)
         bpchrarm <- getCentromereDistCounts(CN_data,centromeres,chrlen)
         changepoint <- getChangepointCN(CN_data)
         copynumber <- getCN(CN_data)

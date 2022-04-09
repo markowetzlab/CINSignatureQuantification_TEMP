@@ -1,4 +1,4 @@
-getOscilation<-function(abs_profiles,chrlen){
+getOscillation<-function(abs_profiles,chrlen){
     out<-c()
     samps<-names(abs_profiles)
     for(i in samps)

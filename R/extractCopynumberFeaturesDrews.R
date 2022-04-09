@@ -15,7 +15,7 @@ extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1
         # Multi-core usage
         `%dopar%` <- foreach::`%dopar%`
         doParallel::registerDoParallel(cores)
-
+        i <- NULL
         temp_list = foreach::foreach(i=1:6) %dopar% {
             if(i == 1){
                 list(segsize = getSegsizeDrews(CN_data, rmNorm = rmNorm) )

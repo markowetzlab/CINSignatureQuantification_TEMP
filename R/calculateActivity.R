@@ -12,8 +12,10 @@ setMethod("calculateActivity",
               }
               switch(method,
                      mac={
-                         SigActs <- t(calculateActivityMac(object))
-                         SigActs <- list(normAct1=SigActs)
+                         SigActs <- calculateActivityMac(object)
+                         Hraw <- t(SigActs[[1]])
+                         SigActs <- t(SigActs[[2]])
+                         SigActs <- list(rawAct0=Hraw,normAct1=NULL,thresholdAct2=SigActs,scaledAct3=NULL)
 
                          W<-t(get(load("data/Macintyre2018_OV_Signatures.rda")))
                          # Combine results

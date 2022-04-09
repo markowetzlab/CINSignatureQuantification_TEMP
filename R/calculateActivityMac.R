@@ -2,12 +2,13 @@
 calculateActivityMac <- function(object){
 
         sample_by_component<-object@featFitting$sampleByComponent
-        component_by_signature<-get(load("data/Macintyre2018_OV_Signatures.rda"))
+        component_by_signature<-get(load("data/Macintyre2018_OV_Signatures_normalised.rda"))
 
-        signature_by_sample<-LCD(t(sample_by_component),YAPSA::normalize_df_per_dim(component_by_signature,2))
+        signature_by_sample<-LCD(t(sample_by_component),component_by_signature)
+        Hraw <- signature_by_sample
         signature_by_sample<-normaliseMatrix(signature_by_sample)
         signature_by_sample
-        return(signature_by_sample)
+        return(list(Hraw,signature_by_sample))
 }
 
 

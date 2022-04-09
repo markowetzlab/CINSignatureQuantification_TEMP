@@ -4,6 +4,9 @@
 #   - Non-standard license
 #   - no visible binding for global variable i (related to foreach loop assignment)
 # - Multiple sample-by-signature matrices are not ideal
+# - pkgdown
+# - clinPredictionPlatinum-methods uses normalised but not threshold adjusted
+# - removed YAPSA::normalise_df_by_dim
 
 # Load library
 library(CINSignatureQuantification)
@@ -20,8 +23,8 @@ sigAct478.mac = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",meth
 myData = createCignatures(data = dfTest)
 
 ## Feature extraction (includes smoothing and preparing data)
-myData.drews = calculateFeatures(myData, method="drews",cores = 6)
-myData.mac = calculateFeatures(myData, method="mac",cores = 6)
+myData.drews = calculateFeatures(myData, method="drews",cores = 1)
+myData.mac = calculateFeatures(myData, method="mac",cores = 1)
 
 ## Get sum-of-posterior matrix
 myData.drews = calculateSampleByComponentMatrix(myData.drews)
@@ -50,7 +53,7 @@ getSamplefeatures(sigAct478.drews)
 # plots
 plotSampleByComponent(sigAct478.drews)
 plotSegments(sigAct478.drews,sample = 1,cn.max = 8)
-plotActivities(object = sigAct478.mac)
+plotActivities(object = sigAct478.drews)
 
 # misc
 getsampleByComponent(sigAct478.drews)
