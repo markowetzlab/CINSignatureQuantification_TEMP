@@ -17,7 +17,7 @@ setMethod("calculateActivity",
                          SigActs <- t(SigActs[[2]])
                          SigActs <- list(rawAct0=Hraw,normAct1=NULL,thresholdAct2=SigActs,scaledAct3=NULL)
 
-                         W<-t(get(load("data/Macintyre2018_OV_Signatures.rda")))
+                         W<-t(get(load("data/Macintyre2018_OV_Signatures_normalised.rda")))
                          # Combine results
                          methods::new("cignaturesSIG",object,
                                       activities=SigActs,

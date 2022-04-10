@@ -2,11 +2,8 @@
 
 # - CHECK E/W/N
 #   - Non-standard license
-#   - no visible binding for global variable i (related to foreach loop assignment)
-# - Multiple sample-by-signature matrices are not ideal
 # - pkgdown
 # - clinPredictionPlatinum-methods uses normalised but not threshold adjusted
-# - removed YAPSA::normalise_df_by_dim
 
 # Load library
 library(CINSignatureQuantification)
