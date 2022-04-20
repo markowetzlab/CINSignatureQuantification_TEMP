@@ -2,7 +2,7 @@ extractCopynumberFeaturesMac <- function(CN_data,cores = 1){
     #chrlen <- get(load("data/hg19.chrom.sizes.rda"))
     chrlen <- get(data("hg19.chrom.sizes",envir = environment()))
     #gaps <- get(load("data/gap_hg19.rda"))
-    gaps <- get(data("gap_hg19.rda",envir = environment()))
+    gaps <- get(data("gap_hg19",envir = environment()))
     centromeres <- gaps[gaps[,8]=="centromere",]
     if(cores > 1) {
         if (!requireNamespace("doParallel", quietly = TRUE)) {
