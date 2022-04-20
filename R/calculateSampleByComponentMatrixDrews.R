@@ -2,7 +2,8 @@
 calculateSampleByComponentMatrixDrews = function(brECNF, UNINFPRIOR = TRUE) {
 
     # Load mix models
-    allModels = get(load("data/Drews2022_TCGA_Mixture_Models.rda"))
+    #allModels = get(load("data/Drews2022_TCGA_Mixture_Models.rda"))
+    allModels = get(data("data/Drews2022_TCGA_Mixture_Models"))
     allFeatures = names(allModels)
 
     # Loop over features and calculate posterior probabilities

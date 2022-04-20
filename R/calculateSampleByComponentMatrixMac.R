@@ -8,7 +8,8 @@ calculateSampleByComponentMatrixMac = function(brECNF, UNINFPRIOR = FALSE) {
     # & -2.12e-14 across 478 TCGA gold standard samples.
 
     # Load mix models
-    allModels = get(load("data/Macintyre2018_OV_Mixture_Models.rda"))
+    #allModels = get(load("data/Macintyre2018_OV_Mixture_Models.rda"))
+    allModels = get(data("Macintyre2018_OV_Mixture_Models"))
     allFeatures = names(allModels)
 
     # Loop over features and calculate posterior probabilities

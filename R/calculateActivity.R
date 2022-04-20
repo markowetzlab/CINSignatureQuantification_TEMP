@@ -17,7 +17,8 @@ setMethod("calculateActivity",
                          SigActs <- t(SigActs[[2]])
                          SigActs <- list(rawAct0=Hraw,normAct1=NULL,thresholdAct2=SigActs,scaledAct3=NULL)
 
-                         W<-t(get(load("data/Macintyre2018_OV_Signatures_normalised.rda")))
+                         #W<-t(get(load("data/Macintyre2018_OV_Signatures_normalised.rda")))
+                         w <- t(get(data("Macintyre2018_OV_Signatures_normalised")))
                          # Combine results
                          methods::new("cignaturesSIG",object,
                                       activities=SigActs,
@@ -37,10 +38,12 @@ setMethod("calculateActivity",
                          lSigs = applyThreshNormAndScaling(Hraw)
 
                          # Load data to be put into model as backup
-                         W = get(load("data/Drews2022_TCGA_Signatures.rda"))
-                         vThresh = get(load("data/Drews2022_TCGA_Signature_Thresholds.rda"))
-                         lScales = get(load("data/Drews2022_TCGA_Scaling_Variables.rda"))
-
+                         #W = get(load("data/Drews2022_TCGA_Signatures.rda"))
+                         w = get(data("Drews2022_TCGA_Signatures"))
+                         #vThresh = get(load("data/Drews2022_TCGA_Signature_Thresholds.rda"))
+                         vThresh = get(data("Drews2022_TCGA_Signature_Thresholds"))
+                         #lScales = get(load("data/Drews2022_TCGA_Scaling_Variables.rda"))
+                         lScales = get(data("Drews2022_TCGA_Scaling_Variables"))
                          # Combine results
                          methods::new("cignaturesSIG",object,
                                       activities=lSigs,
