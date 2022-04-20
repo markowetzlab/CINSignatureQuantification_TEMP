@@ -2,9 +2,9 @@ extractCopynumberFeaturesDrews = function(CN_data, cores = 1, allowedError = 0.1
 
     # Get chromosome length and centromere locations
     #chrlen <- get(load("data/hg19.chrom.sizes.rda"))
-    chrlen <- get(data("hg19.chrom.sizes"))
+    chrlen <- get(data("hg19.chrom.sizes",envir = environment()))
     #gaps <- get(load("data/gap_hg19.rda"))
-    gaps <- get(data("gap_hg19.rda"))
+    gaps <- get(data("gap_hg19.rda",envir = environment()))
     centromeres = gaps[gaps[,8]=="centromere",]
 
     if(cores > 1) {

@@ -9,7 +9,7 @@ calculateSampleByComponentMatrixMac = function(brECNF, UNINFPRIOR = FALSE) {
 
     # Load mix models
     #allModels = get(load("data/Macintyre2018_OV_Mixture_Models.rda"))
-    allModels = get(data("Macintyre2018_OV_Mixture_Models"))
+    allModels = get(data("Macintyre2018_OV_Mixture_Models",envir = environment()))
     allFeatures = names(allModels)
 
     # Loop over features and calculate posterior probabilities
