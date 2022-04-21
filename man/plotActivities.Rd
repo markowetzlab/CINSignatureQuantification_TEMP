@@ -7,13 +7,13 @@
 plotActivities(object)
 }
 \arguments{
-\item{object}{A cignatureSIG class object}
+\item{object}{A SigQuant class object}
 }
 \value{
 plot
 }
 \description{
-Plot the copy number signature activites for a given cignatures class object
+Plot the copy number signature activites for a given CNQuant or SigQuant class object
 containing copy number signature activities/exposures. Default ordering by
-signature 1
+signature CX1
 }

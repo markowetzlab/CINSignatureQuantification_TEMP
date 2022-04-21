@@ -1,7 +1,7 @@
 #' @rdname clinPredictionPlatinum-methods
 #' @aliases clinPredictionPlatinum
 setMethod("clinPredictionPlatinum",
-          signature=c(object="cignaturesSIG"),
+          signature=c(object="SigQuant"),
           definition=function(object){
               if(getExperiment(object)@feature.method != "drews"){
                   stop("This function is only applicable to objects using drews method.")

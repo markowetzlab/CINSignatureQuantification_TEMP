@@ -7,17 +7,17 @@
 addsampleFeatures(object, sample.data = NULL, id.col = "sample")
 }
 \arguments{
-\item{object}{cignatures class object}
+\item{object}{CNQuant or SigQuant class object}
 
 \item{sample.data}{data.frame containing sample-level variables}
 
 \item{id.col}{column containing sample identifiers}
 }
 \value{
-cignaturesCN or cignaturesSIG object with updated samplefeatData
+CNQuant or SigQuant object with updated samplefeatData
 }
 \description{
-Adds custom sample-level data to the samplefeatData field of a cignatures object.
+Adds custom sample-level data to the samplefeatData field of a CNQuant or SigQuant object.
 This can be additional sample information (purity, tumour type, etc.) that can
 be used in downstream analysis.
 }

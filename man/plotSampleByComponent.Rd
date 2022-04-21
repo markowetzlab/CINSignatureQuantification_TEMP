@@ -7,7 +7,7 @@
 plotSampleByComponent(object = NULL, ...)
 }
 \arguments{
-\item{object}{a cignatures class object}
+\item{object}{a CNQuant or SigQuant class object}
 
 \item{...}{additional parameters passed to \link[stats]{heatmap}}
 }

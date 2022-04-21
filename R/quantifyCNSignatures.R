@@ -14,7 +14,7 @@ setMethod(
 
         # Create object from CN profiles
         # TODO: Extend for QDNAseq
-        cigTCGA = createCignatures(data = object, experimentName = experimentName)
+        cigTCGA = createCNQuant(data = object, experimentName = experimentName)
         # Extract features
         cigTCGA = calculateFeatures(object = cigTCGA,
                                     method = method,

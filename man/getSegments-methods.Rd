@@ -3,19 +3,19 @@
 \docType{methods}
 \name{getSegments}
 \alias{getSegments}
-\alias{getSegments,cignaturesCN-method}
+\alias{getSegments,CNQuant-method}
 \title{getSegments}
 \usage{
 getSegments(object)
 
-\S4method{getSegments}{cignaturesCN}(object)
+\S4method{getSegments}{CNQuant}(object)
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 }
 \value{
 A data.frame
 }
 \description{
-Extracts copy number segment data from a cignaturesCN object.
+Extracts copy number segment data from a CNQuant object.
 }

@@ -1,20 +1,20 @@
 #' plotActivities
 #'
-#' Plot the copy number signature activites for a given cignatures class object
+#' Plot the copy number signature activites for a given CNQuant or SigQuant class object
 #' containing copy number signature activities/exposures. Default ordering by
-#' signature 1
+#' signature CX1
 #'
-#' @param object A cignatureSIG class object
+#' @param object A SigQuant class object
 #'
 #' @return plot
 #' @export plotActivities
 #'
 plotActivities <- function(object){
     if(is.null(object)){
-        stop("No object provided, object should be a object of class cignaturesCN or cignaturesSIG")
+        stop("No object provided, object should be a object of class CNQuant or SigQuant")
     }
-    if(!class(object) == "cignaturesSIG"){
-        stop("Object is not of class cignaturesSIG")
+    if(!class(object) == "SigQuant"){
+        stop("Object is not of class SigQuant")
     }
     ## May need to change which matrix is used
     if(object@signature.model == "drews"){

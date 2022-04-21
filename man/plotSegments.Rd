@@ -7,7 +7,7 @@
 plotSegments(object = NULL, sample = NULL, cn.max = 15)
 }
 \arguments{
-\item{object}{A cignatures class object}
+\item{object}{A CNQuant or SigQuant class object}
 
 \item{sample}{A vector of length 1 containing either a sample name or sample index}
 
@@ -17,5 +17,5 @@ plotSegments(object = NULL, sample = NULL, cn.max = 15)
 plot
 }
 \description{
-Plot the segment data for a given sample stored in a cignatures class object
+Plot the segment data for a given sample stored in a CNQuant or SigQuant class object
 }

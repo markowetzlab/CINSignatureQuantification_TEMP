@@ -1,19 +1,19 @@
 #' addsampleFeatures
 #'
-#' Adds custom sample-level data to the samplefeatData field of a cignatures object.
+#' Adds custom sample-level data to the samplefeatData field of a CNQuant or SigQuant object.
 #' This can be additional sample information (purity, tumour type, etc.) that can
 #' be used in downstream analysis.
 #'
-#' @param object cignatures class object
+#' @param object CNQuant or SigQuant class object
 #' @param sample.data data.frame containing sample-level variables
 #' @param id.col column containing sample identifiers
 #'
-#' @return cignaturesCN or cignaturesSIG object with updated samplefeatData
+#' @return CNQuant or SigQuant object with updated samplefeatData
 #' @export
 #'
 addsampleFeatures <- function(object,sample.data=NULL,id.col = "sample"){
-    if(!class(object) %in% c("cignaturesCN","cignaturesSIG")){
-        stop("this function requires a cignatures class object")
+    if(!class(object) %in% c("CNQuant","SigQuant")){
+        stop("this function requires a CNQuant or SigQuant class object")
     }
     if(is.null(sample.data)){
         stop("no sample.data provided")

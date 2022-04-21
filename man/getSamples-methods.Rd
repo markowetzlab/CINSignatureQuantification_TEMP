@@ -3,19 +3,19 @@
 \docType{methods}
 \name{getSamples}
 \alias{getSamples}
-\alias{getSamples,cignaturesCN-method}
+\alias{getSamples,CNQuant-method}
 \title{getSamples}
 \usage{
 getSamples(object)
 
-\S4method{getSamples}{cignaturesCN}(object)
+\S4method{getSamples}{CNQuant}(object)
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 }
 \value{
 A character vector
 }
 \description{
-Extracts sample names from a cignaturesCN object.
+Extracts sample names from a CNQuant object.
 }

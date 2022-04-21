@@ -1,5 +1,5 @@
 #' @rdname getSamples-methods
 #' @aliases getSamples
-setMethod("getSamples",signature = "cignaturesCN",function(object){
+setMethod("getSamples",signature = "CNQuant",function(object){
     rownames(object@samplefeatData)
 })

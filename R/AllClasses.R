@@ -1,4 +1,4 @@
-#' cignaturesExpData object
+#' ExpQuant object
 #'
 #' @slot experimentName character
 #' @slot init.date character
@@ -9,7 +9,7 @@
 #' @slot feature.method character
 #'
 #' @export
-cignaturesExpData <- setClass("cignaturesExpData",
+ExpQuant <- setClass("ExpQuant",
                     slots = list(experimentName = "character",
                                  init.date = "character",
                                  last.modified = "character",
@@ -28,25 +28,25 @@ cignaturesExpData <- setClass("cignaturesExpData",
 )
 
 
-#' cignaturesCN object
+#' CNQuant object
 #'
 #' @slot segments list
 #' @slot featData list
 #' @slot featFitting list
 #' @slot samplefeatData data.frame
-#' @slot ExpData cignaturesExpData
+#' @slot ExpData ExpQuant
 #'
 #' @export
 #'
-cignaturesCN <- setClass("cignaturesCN",
+CNQuant <- setClass("CNQuant",
                     slots = list(segments = "list",
                                  featData = "list",
                                  featFitting = "list",
                                  samplefeatData = "data.frame",
-                                 ExpData = "cignaturesExpData")
+                                 ExpData = "ExpQuant")
 )
 
-#' cignaturesSIG
+#' SigQuant
 #'
 #' @slot activities list
 #' @slot signature.model character
@@ -57,8 +57,8 @@ cignaturesCN <- setClass("cignaturesCN",
 #'
 #' @export
 #'
-cignaturesSIG <- setClass("cignaturesSIG",
-                              contains = "cignaturesCN",
+SigQuant <- setClass("SigQuant",
+                              contains = "CNQuant",
                               slots = list(
                                   activities = "list",
                                   signature.model = "character",

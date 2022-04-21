@@ -1,5 +1,5 @@
 #' @rdname getSamplefeatures-methods
 #' @aliases getSamplefeatures
-setMethod("getSamplefeatures",signature = "cignaturesCN",function(object){
+setMethod("getSamplefeatures",signature = "CNQuant",function(object){
     object@samplefeatData
 })

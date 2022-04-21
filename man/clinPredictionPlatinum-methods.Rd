@@ -3,15 +3,15 @@
 \docType{methods}
 \name{clinPredictionPlatinum}
 \alias{clinPredictionPlatinum}
-\alias{clinPredictionPlatinum,cignaturesSIG-method}
+\alias{clinPredictionPlatinum,SigQuant-method}
 \title{clinPredictionPlatinum}
 \usage{
 clinPredictionPlatinum(object)
 
-\S4method{clinPredictionPlatinum}{cignaturesSIG}(object)
+\S4method{clinPredictionPlatinum}{SigQuant}(object)
 }
 \arguments{
-\item{object}{cignaturesSIG object}
+\item{object}{SigQuant object}
 }
 \value{
 A vector with "Predicted sensitive" or "Predicted resistant" for all samples in the input object.

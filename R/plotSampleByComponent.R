@@ -2,7 +2,7 @@
 #'
 #' Plots a heatmap of the sample-by-component matrix
 #'
-#' @param object a cignatures class object
+#' @param object a CNQuant or SigQuant class object
 #' @param ... additional parameters passed to \link[stats]{heatmap}
 #'
 #' @return plot

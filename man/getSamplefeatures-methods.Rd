@@ -3,19 +3,19 @@
 \docType{methods}
 \name{getSamplefeatures}
 \alias{getSamplefeatures}
-\alias{getSamplefeatures,cignaturesCN-method}
+\alias{getSamplefeatures,CNQuant-method}
 \title{getSamplefeatures}
 \usage{
 getSamplefeatures(object)
 
-\S4method{getSamplefeatures}{cignaturesCN}(object)
+\S4method{getSamplefeatures}{CNQuant}(object)
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 }
 \value{
 A data.frame
 }
 \description{
-Extracts sample feature data from a cignaturesCN object.
+Extracts sample feature data from a CNQuant object.
 }

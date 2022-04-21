@@ -3,23 +3,23 @@
 \docType{methods}
 \name{calculateActivity}
 \alias{calculateActivity}
-\alias{calculateActivity,cignaturesCN-method}
+\alias{calculateActivity,CNQuant-method}
 \title{calculateActivity}
 \usage{
 calculateActivity(object, method = "drews")
 
-\S4method{calculateActivity}{cignaturesCN}(object, method = NULL)
+\S4method{calculateActivity}{CNQuant}(object, method = NULL)
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 
 \item{method}{Determines the mixture components used to calculate sum-of-posterior probabilities. Default is "drews".}
 }
 \value{
-A cignaturesSIG class object with four activity matrices stored in the "activities" slot
+A SigQuant class object with four activity matrices stored in the "activities" slot
 }
 \description{
-Calculates and returns signature activities in a cignaturesSIG object. Works best after function calculateSampleByComponentMatrix call. \cr \cr
+Calculates and returns signature activities in a SigQuant object. Works best after function calculateSampleByComponentMatrix call. \cr \cr
 The output of this function is a list of four matrices, the raw signature activities, the normalised activities, the normalised and
 thresholded signature activities and the normalised, thresholded and scaled activities with the scaling factors obtained from the TCGA cohort.
 }

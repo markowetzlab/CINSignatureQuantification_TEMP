@@ -4,21 +4,21 @@
 \docType{methods}
 \name{calculateSampleByComponentMatrix}
 \alias{calculateSampleByComponentMatrix}
-\alias{calculateSampleByComponentMatrix,cignaturesCN-method}
+\alias{calculateSampleByComponentMatrix,CNQuant-method}
 \title{calculateSampleByComponentMatrix}
 \usage{
 calculateSampleByComponentMatrix(object, method = "drews")
 
-\S4method{calculateSampleByComponentMatrix}{cignaturesCN}(object, method = NULL)
+\S4method{calculateSampleByComponentMatrix}{CNQuant}(object, method = NULL)
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 
 \item{method}{Determines the mixture components used to calculate sum-of-posterior probabilities. Default is "drews".}
 }
 \value{
-A cignaturesCN class object with sum-of-posterior probabilities stored in the "featFitting" slot
+A CNQuant class object with sum-of-posterior probabilities stored in the "featFitting" slot
 }
 \description{
-Calculates and returns a sample-by-component matrix from copy number features in a cignaturesCN object.
+Calculates and returns a sample-by-component matrix from copy number features in a CNQuant object.
 }

@@ -67,7 +67,7 @@ Therefore, these packages need to be installed (see below).
 
 ## Functionality
 
-The `SignatureQuantification` package offers two main functions: `quantifyCNSignatures` and `clinPredictionPlatinum`. It also allows you to do the signature quantification step-by-step with these functions: `createCignatures`, `calculateFeatures`, `calculateSampleByComponentMatrix`, `calculateActivity` and `clinPredictionDenovo`.
+The `SignatureQuantification` package offers two main functions: `quantifyCNSignatures` and `clinPredictionPlatinum`. It also allows you to do the signature quantification step-by-step with these functions: `createCNQuant`, `calculateFeatures`, `calculateSampleByComponentMatrix`, `calculateActivity` and `clinPredictionDenovo`.
 
 ## Getting help
 

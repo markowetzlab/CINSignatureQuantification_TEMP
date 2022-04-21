@@ -2,7 +2,7 @@
 #' @aliases calculateFeatures
 #' @importFrom data.table rbindlist
 setMethod("calculateFeatures",
-          signature=c(object="cignaturesCN"),
+          signature=c(object="CNQuant"),
           definition=function(object,method = NULL,smooth.diploid=TRUE,cores=1){
               methods <- c("mac","drews")
               if(is.null(method)){

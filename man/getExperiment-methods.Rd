@@ -3,19 +3,19 @@
 \docType{methods}
 \name{getExperiment}
 \alias{getExperiment}
-\alias{getExperiment,cignaturesCN-method}
+\alias{getExperiment,CNQuant-method}
 \title{getExperiment}
 \usage{
 getExperiment(object)
 
-\S4method{getExperiment}{cignaturesCN}(object)
+\S4method{getExperiment}{CNQuant}(object)
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 }
 \value{
-A cignaturesExpData class object
+A ExpQuant class object
 }
 \description{
-Extracts and returns copy number features from copy number profiles in a cignaturesCN object.
+Extracts and returns copy number features from copy number profiles in a CNQuant object.
 }

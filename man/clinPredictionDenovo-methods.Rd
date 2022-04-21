@@ -3,15 +3,15 @@
 \docType{methods}
 \name{clinPredictionDenovo}
 \alias{clinPredictionDenovo}
-\alias{clinPredictionDenovo,cignaturesSIG-method}
+\alias{clinPredictionDenovo,SigQuant-method}
 \title{clinPredictionDenovo}
 \usage{
 clinPredictionDenovo(object, sampTrain, sigsTrain)
 
-\S4method{clinPredictionDenovo}{cignaturesSIG}(object, sampTrain, sigsTrain)
+\S4method{clinPredictionDenovo}{SigQuant}(object, sampTrain, sigsTrain)
 }
 \arguments{
-\item{object}{cignaturesSIG object}
+\item{object}{SigQuant object}
 
 \item{sampTrain}{Vector of sample names that should be used for training the classifier.}
 

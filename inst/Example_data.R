@@ -16,8 +16,8 @@ sigAct478.drews = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",me
 sigAct478.mac = quantifyCNSignatures(dfTest,experimentName = "478TCGAPCAWG",method = "mac",cores = 6)
 
 ## Individual functions
-# Convert to cignatures object
-myData = createCignatures(data = dfTest)
+# Convert to CNQuant object
+myData = createCNQuant(data = dfTest)
 
 ## Feature extraction (includes smoothing and preparing data)
 myData.drews = calculateFeatures(myData, method="drews",cores = 1)
@@ -53,6 +53,6 @@ plotSegments(sigAct478.drews,sample = 1,cn.max = 8)
 plotActivities(object = sigAct478.drews)
 
 # misc
-getsampleByComponent(sigAct478.drews)
+getSampleByComponent(sigAct478.drews)
 getExperiment(sigAct478.drews)
 getSamples(sigAct478.drews)

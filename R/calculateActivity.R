@@ -1,7 +1,7 @@
 #' @rdname calculateActivity-methods
 #' @aliases calculateActivity
 setMethod("calculateActivity",
-          signature=c(object="cignaturesCN"),
+          signature=c(object="CNQuant"),
           definition=function(object, method=NULL){
               if(length(object@featFitting) == 0){
                   stop("Sample-by-component unavailable - run 'calculateSampleByComponentMatrix()'")
@@ -20,7 +20,7 @@ setMethod("calculateActivity",
                          #W<-t(get(load("data/Macintyre2018_OV_Signatures_normalised.rda")))
                          W <- t(get(data("Macintyre2018_OV_Signatures_normalised",envir = environment())))
                          # Combine results
-                         methods::new("cignaturesSIG",object,
+                         methods::new("SigQuant",object,
                                       activities=SigActs,
                                       signature.model = method,
                                       backup.signatures=W,
@@ -45,7 +45,7 @@ setMethod("calculateActivity",
                          #lScales = get(load("data/Drews2022_TCGA_Scaling_Variables.rda"))
                          lScales = get(data("Drews2022_TCGA_Scaling_Variables",envir = environment()))
                          # Combine results
-                         methods::new("cignaturesSIG",object,
+                         methods::new("SigQuant",object,
                                       activities=lSigs,
                                       signature.model = method,
                                       backup.signatures=W,

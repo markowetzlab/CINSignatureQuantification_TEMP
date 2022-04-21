@@ -1,7 +1,7 @@
 #' @rdname clinPredictionDenovo-methods
 #' @aliases clinPredictionDenovo
 setMethod("clinPredictionDenovo",
-          signature=c(object="cignaturesSIG"),
+          signature=c(object="SigQuant"),
           definition=function(object, sampTrain, sigsTrain){
               if(getExperiment(object)@feature.method != "drews"){
                   stop("This function is only applicable to objects using drews method.")

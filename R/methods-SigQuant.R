@@ -1,4 +1,4 @@
-setMethod("show", signature=c(object="cignaturesSIG"),
+setMethod("show", signature=c(object="SigQuant"),
           definition=function(object){
               cat(class(object)," object (initialised: ",object@ExpData@init.date,")\n\n",sep = "")
               cat("Experiment name:",object@ExpData@experimentName,"\n")
@@ -38,7 +38,7 @@ setMethod("show", signature=c(object="cignaturesSIG"),
 #' @param ... not used
 #' @param drop not used
 #'
-setMethod("[", signature=c("cignaturesSIG", "numeric", "missing", "ANY"),
+setMethod("[", signature=c("SigQuant", "numeric", "missing", "ANY"),
           definition=function(x, i, j, ..., drop=TRUE){
               segs <- x@segments[i]
               samplefeats <- x@samplefeatData[i,]
@@ -75,7 +75,7 @@ setMethod("[", signature=c("cignaturesSIG", "numeric", "missing", "ANY"),
 #' @param ... not used
 #' @param drop not used
 #'
-setMethod("[", signature=c("cignaturesSIG", "character", "missing", "ANY"),
+setMethod("[", signature=c("SigQuant", "character", "missing", "ANY"),
           definition=function(x, i, j, ..., drop=TRUE){
               segs <- x@segments[names(x@segments) %in% i]
               samplefeats <- x@samplefeatData[rownames(x@samplefeatData) %in% i,]

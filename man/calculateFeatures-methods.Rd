@@ -3,15 +3,15 @@
 \docType{methods}
 \name{calculateFeatures}
 \alias{calculateFeatures}
-\alias{calculateFeatures,cignaturesCN-method}
+\alias{calculateFeatures,CNQuant-method}
 \title{calculateFeatures}
 \usage{
 calculateFeatures(object, method = "drews", smooth.diploid = TRUE, cores = 1)
 
-\S4method{calculateFeatures}{cignaturesCN}(object, method = NULL, smooth.diploid = TRUE, cores = 1)
+\S4method{calculateFeatures}{CNQuant}(object, method = NULL, smooth.diploid = TRUE, cores = 1)
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 
 \item{method}{Method to extract copy number features. Default is "drews".}
 
@@ -20,8 +20,8 @@ calculateFeatures(object, method = "drews", smooth.diploid = TRUE, cores = 1)
 \item{cores}{Number of CPU threads/cores to utilise via doParallel. Default is 1.}
 }
 \value{
-A cignaturesCN class object with extracted features stored in the "featData" slot
+A CNQuant class object with extracted features stored in the "featData" slot
 }
 \description{
-Extracts and returns copy number features from copy number profiles in a cignaturesCN object.
+Extracts and returns copy number features from copy number profiles in a CNQuant object.
 }

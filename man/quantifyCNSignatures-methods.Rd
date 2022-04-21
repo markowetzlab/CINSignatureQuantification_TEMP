@@ -21,7 +21,7 @@ quantifyCNSignatures(
 )
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 
 \item{experimentName}{A user-specified name of the experiment}
 
@@ -30,7 +30,7 @@ quantifyCNSignatures(
 \item{cores}{Number of threads/cores to use for parallel processing}
 }
 \value{
-A cignaturesSIG class object with four activity matrices stored in the "activities" slot
+A SigQuant class object with four activity matrices stored in the "activities" slot
 }
 \description{
 This function takes a copy number profile as input and returns signature activities.

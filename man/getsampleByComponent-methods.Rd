@@ -3,15 +3,15 @@
 \docType{methods}
 \name{getSampleByComponent}
 \alias{getSampleByComponent}
-\alias{getSampleByComponent,cignaturesCN-method}
+\alias{getSampleByComponent,CNQuant-method}
 \title{getSampleByComponent}
 \usage{
 getSampleByComponent(object)
 
-\S4method{getSampleByComponent}{cignaturesCN}(object)
+\S4method{getSampleByComponent}{CNQuant}(object)
 }
 \arguments{
-\item{object}{cignaturesCN object}
+\item{object}{CNQuant object}
 }
 \value{
 matrix containing the sample-by-component data

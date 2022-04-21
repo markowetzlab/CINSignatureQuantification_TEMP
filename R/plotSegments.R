@@ -1,8 +1,8 @@
 #' plotSegments
 #'
-#' Plot the segment data for a given sample stored in a cignatures class object
+#' Plot the segment data for a given sample stored in a CNQuant or SigQuant class object
 #'
-#' @param object A cignatures class object
+#' @param object A CNQuant or SigQuant class object
 #' @param sample A vector of length 1 containing either a sample name or sample index
 #' @param cn.max Maximum copy number to plot - Values over this are truncated to fit
 #'
@@ -11,10 +11,10 @@
 #'
 plotSegments <- function(object=NULL,sample=NULL,cn.max=15){
     if(is.null(object)){
-        stop("No object provided, object should be a object of class cignaturesCN or cignaturesSIG")
+        stop("No object provided, object should be a object of class CNQuant or SigQuant")
     }
-    if(!class(object) %in% c("cignaturesCN","cignaturesSIG")){
-        stop("Object is not of class cignaturesCN or cignaturesSIG")
+    if(!class(object) %in% c("CNQuant","SigQuant")){
+        stop("Object is not of class CNQuant or SigQuant")
     }
     if(is.null(sample)){
         stop("No sample specified; sample should be an integer index or name of sample contained within the provided object")
