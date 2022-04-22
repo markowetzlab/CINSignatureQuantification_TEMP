@@ -17,7 +17,7 @@ getChangepointCNMac<-function(abs_profiles){
         allcp<-c()
         for(c in chrs)
         {
-            currseg<-as.numeric(segTab[segTab$chromosome==c,"segVal"])
+            currseg<-as.numeric(segTab$segVal[segTab$chromosome==c])
             allcp<-c(allcp,abs(currseg[-1]-currseg[-length(currseg)]))
         }
         if(length(allcp)==0)

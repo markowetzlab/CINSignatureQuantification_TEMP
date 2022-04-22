@@ -17,29 +17,29 @@ extractCopynumberFeaturesMac <- function(CN_data,cores = 1){
         i <- NULL
         temp_list = foreach::foreach(i=1:6) %dopar% {
             if(i == 1){
-                list(segsize = getSegsize(CN_data) )
+                list(segsize = getSegsizeMac(CN_data) )
             } else if (i == 2) {
-                list(bp10MB = getBPnum(CN_data,chrlen) )
+                list(bp10MB = getBPnumMac(CN_data,chrlen) )
             } else if (i == 3) {
-                list(osCN = getOscillation(CN_data,chrlen) )
+                list(osCN = getOscillationMac(CN_data,chrlen) )
             } else if (i == 4) {
-                list(bpchrarm = getCentromereDistCounts(CN_data,centromeres,chrlen) )
+                list(bpchrarm = getCentromereDistCountsMac(CN_data,centromeres,chrlen) )
             } else if (i == 5) {
-                list(changepoint = getChangepointCN(CN_data) )
+                list(changepoint = getChangepointCNMac(CN_data) )
             } else {
-                list(copynumber = getCN(CN_data) )
+                list(copynumber = getCNMac(CN_data) )
             }
 
         }
         doParallel::stopImplicitCluster()
         unlist( temp_list, recursive = FALSE )
     } else {
-        segsize <- getSegsize(CN_data)
-        bp10MB <- getBPnum(CN_data,chrlen)
-        osCN <- getOscillation(CN_data,chrlen)
-        bpchrarm <- getCentromereDistCounts(CN_data,centromeres,chrlen)
-        changepoint <- getChangepointCN(CN_data)
-        copynumber <- getCN(CN_data)
+        segsize <- getSegsizeMac(CN_data)
+        bp10MB <- getBPnumMac(CN_data,chrlen)
+        osCN <- getOscillationMac(CN_data,chrlen)
+        bpchrarm <- getCentromereDistCountsMac(CN_data,centromeres,chrlen)
+        changepoint <- getChangepointCNMac(CN_data)
+        copynumber <- getCNMac(CN_data)
 
         list(segsize=segsize,
              bp10MB=bp10MB,

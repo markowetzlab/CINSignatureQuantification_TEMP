@@ -17,9 +17,9 @@ getCentromereDistCountsMac<-function(abs_profiles,centromeres,chrlen){
         {
             if(nrow(segTab)>1)
             {
-                starts<-as.numeric(segTab[segTab$chromosome==c,2])[-1]
-                segstart<-as.numeric(segTab[segTab$chromosome==c,2])[1]
-                ends<-as.numeric(segTab[segTab$chromosome==c,3])
+                starts<-as.numeric(segTab$start[segTab$chromosome==c])[-1]
+                segstart<-as.numeric(segTab$start[segTab$chromosome==c])[1]
+                ends<-as.numeric(segTab$end[segTab$chromosome==c])
                 segend<-ends[length(ends)]
                 ends<-ends[-length(ends)]
                 centstart<-as.numeric(centromeres[substr(centromeres[,2],4,5)==c,3])

@@ -15,7 +15,7 @@ getOscillationMac<-function(abs_profiles,chrlen){
         oscCounts<-c()
         for(c in chrs)
         {
-            currseg<-segTab[segTab$chromosome==c,"segVal"]
+            currseg<-segTab$segVal[segTab$chromosome==c]
             currseg<-round(as.numeric(currseg))
             if(length(currseg)>3)
             {
