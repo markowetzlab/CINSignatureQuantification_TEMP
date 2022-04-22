@@ -2,7 +2,7 @@
 #'
 #' @param data Unrounded absolute copy number data
 #' @param experimentName A name for the experiment (default: defaultExperiment)
-#' @param build A genome build specified as either hg19 or hg38 (default: hg19)
+#' @param build A genome build specified as hg19 (default: hg19)
 #'
 #' @return A CNQuant class object
 #' @export createCNQuant
@@ -18,7 +18,7 @@ createCNQuant <- function(data=NULL,experimentName = "defaultExperiment",build =
         if(file.exists(data)){
             header <- colnames(data.table::fread(input = data,
                                                  header = T,
-                                                 colClasses = c("character","numeric","numeric","numeric","character"),
+                                                 #colClasses = c("character","numeric","numeric","numeric","character"),
                                                  nrows = 1))
             if(!any(header == c("chromosome","start","end","segVal","sample"))){
                 stop("Header does not match the required naming")
@@ -27,7 +27,7 @@ createCNQuant <- function(data=NULL,experimentName = "defaultExperiment",build =
                                           header = T,
                                           colClasses = c("character","numeric","numeric","numeric","character"))
             if(checkSegValRounding(segTable$segVal)){
-                warning("segVal appears to be rounded, copy number signatures require unrounded absolute copy numbers")
+                warning("segVal appears to be rounded, copy number signatures require unrounded absolute copy numbers",)
             }
             if(checkbinned(segTable)){
                 #segTable <- getSegTable()
@@ -36,8 +36,11 @@ createCNQuant <- function(data=NULL,experimentName = "defaultExperiment",build =
                 #
                 #split(segTable,f = as.factor(segTable$sample))
             } else {
+                # Check chromosome field is correctly formatted for hg19
+                segTable$chromosome <- checkChromosomeFormat(segTable$chromosome)
                 segTable <- split(segTable,f = as.factor(segTable$sample))
             }
+
             samplefeatData <- generateSampleFeatData(x = segTable)
             methods::new("CNQuant",segments = segTable,samplefeatData = samplefeatData,
                 ExpData = methods::new("ExpQuant",
@@ -51,7 +54,10 @@ createCNQuant <- function(data=NULL,experimentName = "defaultExperiment",build =
         if(checkSegValRounding(segTable$segVal)){
             warning("segVal appears to be rounded, copy number signatures require unrounded absolute copy numbers")
         }
+        # Check chromosome field is correctly formatted for hg19
+        segTable$chromosome <- checkChromosomeFormat(segTable$chromosome)
         segTable <- split(segTable,f = as.factor(segTable$sample))
+
         samplefeatData <- generateSampleFeatData(x = segTable)
         methods::new("CNQuant",segments = segTable,samplefeatData = samplefeatData,
                      ExpData = methods::new("ExpQuant",
@@ -61,8 +67,8 @@ createCNQuant <- function(data=NULL,experimentName = "defaultExperiment",build =
                           experimentName = experimentName))
     } else if(is.data.frame(data)){
         header <- colnames(data)
-        if(!any(header == c("chromosome","start","end","segVal","sample"))){
-            stop("Header does not match the required naming")
+        if(!all(header %in% c("chromosome","start","end","segVal","sample"))){
+            stop("Header does not match the required naming: chromosome,start,end,segVal,sample")
         }
         segTable <- data
         if(checkSegValRounding(segTable$segVal)){
@@ -72,8 +78,12 @@ createCNQuant <- function(data=NULL,experimentName = "defaultExperiment",build =
             #segTable <- getSegTable()
             #split(segTable,f = as.factor(segTable$sample))
         } else {
+            # Check chromosome field is correctly formatted for hg19
+            segTable$chromosome <- checkChromosomeFormat(segTable$chromosome)
             segTable <- split(segTable,f = as.factor(segTable$sample))
         }
+
+
         samplefeatData <- generateSampleFeatData(x = segTable)
         methods::new("CNQuant",segments=segTable,samplefeatData = samplefeatData,
                      ExpData = methods::new("ExpQuant",

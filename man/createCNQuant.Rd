@@ -15,7 +15,7 @@ createCNQuant(
 
 \item{experimentName}{A name for the experiment (default: defaultExperiment)}
 
-\item{build}{A genome build specified as either hg19 or hg38 (default: hg19)}
+\item{build}{A genome build specified as hg19 (default: hg19)}
 }
 \value{
 A CNQuant class object

@@ -6,4 +6,8 @@
 #' Drews et al. (Nature, 2022) and Macintyre et al. (Nature Genetics, 2018) are included.
 #' @name CINSignatureQuantification
 #' @docType package
+#' @import stats
+#' @import utils
+#' @import methods
+#' @import graphics
 NULL
