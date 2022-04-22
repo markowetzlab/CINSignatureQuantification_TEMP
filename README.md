@@ -62,7 +62,6 @@ The `SignatureQuantification` package requires R version >= 4.0 and depends on t
 * parallel
 * foreach
 * doMC
-* YAPSA
 Therefore, these packages need to be installed (see below).
 
 ## Functionality

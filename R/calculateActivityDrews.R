@@ -1,4 +1,3 @@
-#' @importFrom YAPSA LCD
 calculateActivityDrews = function(myData) {
 
     # Extract relevant information from object
@@ -30,14 +29,14 @@ calculateActivityDrews = function(myData) {
         W = W[ match(rownames(V), rownames(W)), ]
     }
 
-    ### YAPSA needs:
+    ### Functions needs:
     ## Full matrix V        mutCatalogue        components (rows) by samples (cols)    <= HAVE
     ## Left matrix W        sigCatalogue        components (rows) by signature (cols)   <= HAVE
     ## Right matrix H       expCatalogue        signature (rows) by samples (cols)     <= WANT
 
-    # in_mutation_catalogue_df => NxM => N - Features, M - Samples => Component by Sample matrix
-    # in_signatures_df => NxL => N - Features, L - Signatures => Component by Signature matrix
-    Hraw = as.matrix( LCD( in_mutation_catalogue_df = V, in_signatures_df = W, in_per_sample_cutoff = 0 ) )
+    # component_by_sample => NxM => N - Features, M - Samples => Component by Sample matrix
+    # component_by_signature => NxL => N - Features, L - Signatures => Component by Signature matrix
+    Hraw = as.matrix(LinCombDecompSigs(component_by_sample = V, component_by_signature = W))
     return(Hraw)
 
 }
